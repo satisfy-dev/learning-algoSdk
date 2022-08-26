@@ -3,9 +3,9 @@ import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
 import * as backendCtc from "../reachBackend/index.main.js";
 let algoWalletConnected = false
 let acc = null
-export const contractId = '106242078'
-export const tokenId = '106113272'
-
+export const contractId = '106699577'
+export const tokenId = '106695076'
+export const contractAddr = 'TRXH6GPYZX6VFNKL45UYGVNGUPFHAEZLTJD63MGQ3HDVNAV3NGILO6IFTM'
  //useful function to getELement by id
 export const getElement = (id) => {
     let theElement = document.getElementById(id);
@@ -163,9 +163,9 @@ export const deployContract = async () => {
     }
     const ctcCreator = acc.contract(backendCtc);
     //launch gAlgo Token and launch contract
-    reach.launchToken(acc, 'gALgo', 'gAlgo').then(
-        (gAlgo) => {
-            alert(`gAlgo token has been launched: ${gAlgo.id}`);
+    /* reach.launchToken(acc, 'gALgo', 'gAlgo').then(
+        (gAlgo) => { */
+            //alert(`gAlgo token has been launched: ${gAlgo.id}`);
             backendCtc.Creator(ctcCreator, {
                 getParams: () => {
                     console.log(`${reach.formatAddress(acc)} about to set five parameters of Contract`);
@@ -175,16 +175,19 @@ export const deployContract = async () => {
                          Manager : acc,
                          minimumForTicket : reach.parseCurrency(10),
                          weeklyPercent : reach.parseCurrency(0.03/12),
-                         gAlgoAdminSupply : reach.parseCurrency(100000),
+                         gAlgoAdminSupply : reach.parseCurrency(1),
                     }
                 },
                 iDeployed: async (msg) => {
                     console.log(msg);
                     let deployedCtc = await (ctcCreator.getInfo());
+                    let ctcAddress = reach.formatAddress(await ctcCreator.getContractAddress());
                     alert(`this is the contract ID: ${deployedCtc} and ${msg}`);
+                    alert(`this is the contract ADDRESS: ${ctcAddress}`);
                 },
-            })        }
-    )
+            })        
+          /* }
+    ) */
 }
 
 export const vTotMinted = async () => {

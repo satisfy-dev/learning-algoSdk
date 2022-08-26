@@ -3,8 +3,11 @@ This is just a repo for me to practice and learn building transactions with Algo
 **Developed by**: [Sunday Akinbowale](https://github.com/asolpshinning)
 
 ## Activity Log
-
-**08/24/2022** - `pages/test1` is the main page I am currently performing my tests, while learning. Most transactions are working well, except myAlgo is not able to sign logic signatures
+**08/24/2022** 
+    - `rsh/index.rsh` decided to add a test transfer function to the reach contract to see if the address of the contract can be used as a clawback address on an ASA .I found out it can be used. But then there was no way to make the asset frozen again for all accounts, and no way to go back to default frozen. 
+**08/24/2022** 
+    - `pages/test1` is the main page I am currently performing my tests, while learning. Most transactions are working well, except myAlgo is not able to sign logic signatures
+    - `teal/testStateless.js` - this is the teal code exported as a javascript constant
 
 
 ## Next Plan (Possibly)
