@@ -1,5 +1,6 @@
 import algosdk from "algosdk";
 import { testStateless } from "../teal/testStateless";
+import { deployController } from "../utils/deployController";
 /* const token = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 const server = "http://localhost";
 const port = 4001; */
@@ -23,26 +24,26 @@ export default function Test1(){
         const compiled = await algodClient.compile(teal).do();
         let program = new Uint8Array(Buffer.from(compiled.result, "base64"));
         console.log(program);
-        let args = getUint8Int(12345);
-        let lsig = new algosdk.LogicSigAccount(program);
+        let args = getUint8Int(123);
+        let lsig = new algosdk.LogicSigAccount(program, args);
         console.log(`lsig is: `, lsig);
         //const lsig = algosdk.makeLogicSig(new Uint8Array(Buffer.from(compiled, "base64")));
         //receiver
-        let sender = lsig.address();        
-        console.log("lsig (receiver) : " + sender);   
+        let sender = lsig.address();     //UVBYHRZIHUNUELDO6HWUAHOZF6G66W6T3JOXIIUSV3LDSBWVCFZ6LM6NCA   
+        console.log("lsig (sender) : " + sender);   
         //sender
-        let receiver = 'SOEI4UA72A7ZL5P25GNISSVWW724YABSGZ7GHW5ERV4QKK2XSXLXGXPG5Y';
+        let receiver = '2K5BFAHT3HBRAIE43KYBPDBCGAQ7RXCK3VKGBUYGD4BQMOJABNTSF4KJIY'; //my acc3
         //connect myAlgo
-        const myAlgoConnect = new MyAlgoConnect();
+        /* const myAlgoConnect = new MyAlgoConnect();
         //
         const settings = {
             shouldSelectOneAccount: false,
             openManager: false
         };
         const accounts = await myAlgoConnect.connect(settings);
-        console.log(`accounts: `, accounts);
+        console.log(`accounts: `, accounts); */
         //sign logic with myAlgo using lsig address (receiver)
-        lsig.sig = await myAlgoConnect.signLogicSig(lsig.logic, receiver);
+        //lsig.sig = await myAlgoConnect.signLogicSig(lsig.logic, receiver);
         
         //create transaction
         const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
@@ -51,20 +52,21 @@ export default function Test1(){
             },
             from: sender,
             to: receiver, 
-            amount: 10000,
+            amount: 100000,
             //note: 'just rying this out'
         });
         //sign the transaction with logic signature
         let rawSignedLsigTxn1 = algosdk.signLogicSigTransactionObject(txn, lsig);
         console.log("Signed transaction with logic signature: " + rawSignedLsigTxn1.blob);
         //send the transaction
-        //let tx = await algodClient.sendRawTransaction(rawSignedLsigTxn1.blob).do();
-        //console.log("Transaction : " + tx.txId);
+        let tx = await algodClient.sendRawTransaction(rawSignedLsigTxn1.blob).do();
+        console.log("Transaction : " + tx.txId);
     }
 
     return <div>
         <h1>Test1</h1>
-        <button onClick={compileTeal}> Compile Teal</button>
+        <button onClick={compileTeal}> Compile Teal</button><br/><br/>
+        <button onClick={deployController}> Deploy Controller</button>
     </div>
 
 }
