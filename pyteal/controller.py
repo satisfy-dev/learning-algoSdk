@@ -1,4 +1,7 @@
+import sys
+sys.path.insert(0,'..')
 from pyteal import *
+from algobpy.parse import parse_params
 
 def approval_program(TOKEN_ID):
     """
@@ -205,12 +208,12 @@ def approval_program(TOKEN_ID):
     return program
 
 if __name__ == "__main__":
-    """ params = {
-        "TOKEN_ID": 11,
-    } """
+    params = {
+        "TOKEN_ID": 106819526,
+    }
 
     # Overwrite params if sys.argv[1] is passed
-    """ if(len(sys.argv) > 1):
-        params = parse_params(sys.argv[1], params) """
+    if(len(sys.argv) > 1):
+        params = parse_params(sys.argv[1], params)
     optimize_options = OptimizeOptions(scratch_slots=True)
-    print(compileTeal(approval_program(106819526), Mode.Application, version = 5, optimize=optimize_options))
+    print(compileTeal(approval_program(params["TOKEN_ID"]), Mode.Application, version = 5, optimize=optimize_options))

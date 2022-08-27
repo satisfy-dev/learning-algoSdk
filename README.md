@@ -3,6 +3,9 @@ This is just a repo for me to practice and learn building transactions with Algo
 **Developed by**: [Sunday Akinbowale](https://github.com/asolpshinning)
 
 ## Activity Log
+
+**08/27/2022** 
+    - was able to deploy `controller.py` and opted in successfully... loaded the argument foreign asset (which is default frozen token)
 **08/26/2022** 
     - was able to make `lsig` a sender to send some algo to my testnet account/address. Found out does not require signing by myAlgo if you are using the lsig as a contract account (it just works). 
     - `pyteal/controller.js` exported TEAL code compiled from pyTeal (on my replit) compiled `controller.py` from algobuilder security token or permissioned ASA
@@ -17,45 +20,16 @@ This is just a repo for me to practice and learn building transactions with Algo
 
 ## Next Plan (Possibly)
 
+- [] Use AlgoSDK to interact with a Reach smart contract
+- [] Interact with a deployed TEAL stateful contract using algoSDK
 - [X] Use logic signatures in transaction without an account signature
 - [X] Deploy a test stateful contract using algoSDK
+- [X] Deploy one or two contracts from AlgoBuilder
 - [] Try to sign logic signatures with sk
 - [] Get a logic signature in a group transaction and see how everything works together
-- [] See what other wallet can be used to sign lsig
-- [] Try the myAlgo way of signing arbitrary data, and see if this would be useful for signing in functionality
+- [] See what other wallets can be used to sign lsig
+- [] Try the myAlgo way of signing arbitrary data, and see if this would be useful for login/logout functionality
 - [] build a wallet that does everything you want it to do (start by forking myAlgo Connect and rewrite it)
 
 
-## To Run This Project
 
-First, run the development server:
-
-```bash
-cd src
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

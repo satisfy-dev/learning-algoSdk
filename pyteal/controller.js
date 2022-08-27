@@ -42,7 +42,7 @@ bnz main_l11
 err
 main_l11:
 txna Assets 0
-int 101980751
+int 106819526
 ==
 assert
 int 0
@@ -65,7 +65,7 @@ int axfer
 ==
 &&
 gtxn 1 XferAsset
-int 101980751
+int 106819526
 ==
 &&
 &&
@@ -128,7 +128,7 @@ int axfer
 ==
 &&
 gtxn 1 XferAsset
-int 101980751
+int 106819526
 ==
 &&
 &&
@@ -157,7 +157,7 @@ int 1
 ==
 &&
 txna Assets 0
-int 101980751
+int 106819526
 ==
 &&
 txn TypeEnum
@@ -180,7 +180,7 @@ asset_params_get AssetReserve
 store 3
 store 2
 txna Assets 0
-int 101980751
+int 106819526
 ==
 txn Sender
 load 2
@@ -215,7 +215,7 @@ int 1
 ==
 &&
 txna Assets 0
-int 101980751
+int 106819526
 ==
 &&
 txn Sender
@@ -270,7 +270,7 @@ int 1
 ==
 &&
 txna Assets 0
-int 101980751
+int 106819526
 ==
 &&
 txn Sender
