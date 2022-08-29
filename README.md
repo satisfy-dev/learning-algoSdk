@@ -5,7 +5,9 @@ This is just a repo for me to practice and learn building transactions with Algo
 ## Activity Log
 
 **08/27/2022** 
+    - generated the clawback address and set it as the claw back of the frozen ASA using myAlgo
     - was able to deploy `controller.py` and opted in successfully... loaded the argument foreign asset (which is default frozen token)
+    - now able to compile pyTeal directly on vs code instead of going to replit to do it... installed pyteal and yaml successfully
 **08/26/2022** 
     - was able to make `lsig` a sender to send some algo to my testnet account/address. Found out does not require signing by myAlgo if you are using the lsig as a contract account (it just works). 
     - `pyteal/controller.js` exported TEAL code compiled from pyTeal (on my replit) compiled `controller.py` from algobuilder security token or permissioned ASA

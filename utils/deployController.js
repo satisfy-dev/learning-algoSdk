@@ -1,5 +1,4 @@
 import algosdk from "algosdk";
-import MyAlgoConnect from '@randlabs/myalgo-connect';
 import { signAndSendTxn } from "./algoSdkFunctions";
 import { controller } from "../pyteal/controller";
 import {clearState} from "../pyteal/clearState";
