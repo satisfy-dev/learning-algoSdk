@@ -4,6 +4,8 @@ This is just a repo for me to practice and learn building transactions with Algo
 
 ## Activity Log
 
+**08/28/2022** 
+    - figured out how to sign arbitrary data with myAlgo at `deployClawback/signArbitraryData()`... also was able to sign payment transaction of 0 from an address to the same address. Any of these can possible be used for signing or authentication purpose
 **08/27/2022** 
     - generated the clawback address and set it as the claw back of the frozen ASA using myAlgo
     - was able to deploy `controller.py` and opted in successfully... loaded the argument foreign asset (which is default frozen token)

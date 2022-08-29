@@ -1,6 +1,7 @@
 import algosdk from "algosdk";
 import {clawBack} from "../pyteal/clawBack"; 
 const algodClient = new algosdk.Algodv2("",'https://node.testnet.algoexplorerapi.io', '');
+const MyAlgoConnect = require('@randlabs/myalgo-connect');
 
 
     function getUint8Int(number) {
@@ -23,18 +24,25 @@ const algodClient = new algosdk.Algodv2("",'https://node.testnet.algoexplorerapi
         console.log("lsig address(sender) : " + sender);  
         alert("lsig address(sender) : " + sender);
         //receiver
-        //let receiver = ''; //my acc3
+        let senderSender = 'TUVXETKP3QZYEHLTL3NYHORZUODJUKKDWYYFKL4PQUSZEIYXVHFKRVIXBY'; //my acc2
+        let receiver = senderSender; //change this for lsig if needed
         
         //create transaction
         const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
             suggestedParams: {
                 ...params,
             },
-            from: sender,
+            from: senderSender,
             to: receiver, 
-            amount: 100000,
+            amount: 0,
             //note: 'just rying this out'
         });
+        //trying to sign 0 payment transaction real quickly
+        /* const myAlgoConnect = new MyAlgoConnect();
+        const signedTxn = await myAlgoConnect.signTransaction(txn.toByte());
+        console.log("Signed transaction: " , signedTxn);
+        alert("Signed transaction : " + signedTxn.blob); */
+
         //sign the transaction with logic signature
         /* let rawSignedLsigTxn1 = algosdk.signLogicSigTransactionObject(txn, lsig);
         console.log("Signed transaction with logic signature: " + rawSignedLsigTxn1.blob);
@@ -43,3 +51,13 @@ const algodClient = new algosdk.Algodv2("",'https://node.testnet.algoexplorerapi
         console.log("Transaction : " + tx.txId); */
     }
 
+
+    //sign arbitrary data
+    export const signArbitraryData = async() => {
+        const myAlgoConnect = new MyAlgoConnect();
+        const data = new Uint8Array(['ifnuefae']);
+        const contractAddress = 'SIMRUXJ7KQWFMY62LN2U2S3MAGX2CLYZKQK5WKFH4ZAWBB3LMLKPTI6RYI'; //lsig address
+        const signer = 'TUVXETKP3QZYEHLTL3NYHORZUODJUKKDWYYFKL4PQUSZEIYXVHFKRVIXBY';
+        const signature = await myAlgoConnect.tealSign(data, contractAddress, signer);
+        console.log(signature);
+    }

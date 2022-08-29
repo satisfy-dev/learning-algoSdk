@@ -1,6 +1,6 @@
 import algosdk from "algosdk";
 import { testStateless } from "../teal/testStateless";
-import { deployClawback } from "../utils/deployClawback";
+import { deployClawback, signArbitraryData } from "../utils/deployClawback";
 import {deployController} from "../utils/deployController";
  
 const algodClient = new algosdk.Algodv2("",'https://node.testnet.algoexplorerapi.io', '');
@@ -53,6 +53,8 @@ export default function Test1(){
         <button onClick={compileTeal}> Compile Teal</button><br/><br/>
         <button onClick={deployController}> Deploy Controller</button><br/><br/>
         <button onClick={deployClawback}> Deploy Clawback</button><br/><br/>
+        <button onClick={signArbitraryData}> Sign Arbitrary Data</button><br/><br/>
+
     </div>
 
 }
