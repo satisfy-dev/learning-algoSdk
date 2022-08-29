@@ -55,9 +55,11 @@ const MyAlgoConnect = require('@randlabs/myalgo-connect');
     //sign arbitrary data
     export const signArbitraryData = async() => {
         const myAlgoConnect = new MyAlgoConnect();
-        const data = new Uint8Array(['ifnuefae']);
+        const data = new Uint8Array(['This signature is just for logging in purpose']);
+        //const contractAddress = 'TRXH6GPYZX6VFNKL45UYGVNGUPFHAEZLTJD63MGQ3HDVNAV3NGILO6IFTM'
         const contractAddress = 'SIMRUXJ7KQWFMY62LN2U2S3MAGX2CLYZKQK5WKFH4ZAWBB3LMLKPTI6RYI'; //lsig address
         const signer = 'TUVXETKP3QZYEHLTL3NYHORZUODJUKKDWYYFKL4PQUSZEIYXVHFKRVIXBY';
         const signature = await myAlgoConnect.tealSign(data, contractAddress, signer);
         console.log(signature);
     }
+    //[103, 178, 52, 9, 69, 226, 75, 137, 8, 125, 105, 129, 164, 199, 63, 159, 240, 175, 32, 176, 18, 72, 5, 175, 191, 232, 225, 102, 186, 242, 25, 64, 176, 247, 250, 135, 149, 78, 244, 74, 174, 85, 94, 156, 34, 209, 129, 196, 238, 27, 39, 252, 119, 55, 216, 133, 164, 43, 112, 239, 53, 91, 215, 0, buffer: ArrayBuffer(64), byteLength: 64, byteOffset: 0, length: 64, Symbol(Symbol.toStringTag): 'Uint8Array']
