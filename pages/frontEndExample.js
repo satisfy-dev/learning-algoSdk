@@ -1,9 +1,8 @@
 import React, {useState, useRef} from 'react';
-import {getElement} from '../utils/contractFunctions';
+import { Dropdown } from 'semantic-ui-react';
 
 const FrontEndExample = () => {
     const apiNames = useRef(['']);
-    const apiIndex = useRef(0);
 
     const handleApiNameChange = (e,id) => {
         let newArr = [...apiNames.current];
@@ -24,23 +23,40 @@ const FrontEndExample = () => {
             </div>
         ]);
     
+    //apiDetail is a function that returns a div with the api details and can be used in setApiDetails
     const apiDetail = (i) => {
+        const argOptions  = [
+            { key: 'string', text: 'string', value: 'string' },
+            { key: 'number', text: 'number', value: 'number' },
+            { key: 'address', text: 'address', value: 'address' },
+            { key: 'token', text: 'token', value: 'token' },
+            { key: 'boolean', text: 'boolean', value: 'boolean' },
+        ];
         return <div>
                     <h2>{apiArray.length > 0 && `ApiName: ${apiNames.current[i]}`}</h2>
+                    <div>
+                        <h3>arg</h3>
+                        <Dropdown
+                            selection={true}
+                            placeholder='Select arg'
+                            options={argOptions}
+                        />
+                    </div>
                 </div>
     }
 
     const [apiDetails, setApiDetails] = useState(apiDetail(0));
     
+    //function to add a new API name that is editable
     const addApi = () => {
-        let l = apiArray.length;
+        let index = apiArray.length;
         setApiArray(
             [
                 ...apiArray, 
-                <div id = {`argInput${l}`}>ApiName: <input onChange = {(event) => handleApiNameChange(event,l)} type="text" />
-                    <button 
+                <div id = {`argInput${index}`}>ApiName: <input onChange = {(event) => handleApiNameChange(event,index)} type="text" />
+                    <button //edit API button
                         onClick = {() => {
-                            setApiDetails(apiDetail(l));
+                            setApiDetails(apiDetail(index));
                         }}
                     >
                         Edit
